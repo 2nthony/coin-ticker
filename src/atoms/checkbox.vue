@@ -3,7 +3,7 @@
     <input
       type="checkbox"
       :checked="checked"
-      @change="$emit('checked', (<HTMLInputElement>$event.target).checked)"
+      @change="$emit('change', (<HTMLInputElement>$event.target).checked)"
       :class="[$slots.defaults && 'mr-1']"
     />
 
