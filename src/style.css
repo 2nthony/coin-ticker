@@ -22,3 +22,20 @@ button {
 button {
   outline: none;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 40px;
+  @apply bg-neutral-500;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-opacity-50;
+}
