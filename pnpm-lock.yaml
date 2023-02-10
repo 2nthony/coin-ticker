@@ -17,6 +17,7 @@ specifiers:
   vue: ^3.2.45
   vue-router: ^4.1.6
   vue-tsc: ^1.0.11
+  vue-virtual-scroller: 2.0.0-beta.8
 
 dependencies:
   '@tauri-apps/api': 1.2.0
@@ -25,6 +26,7 @@ dependencies:
   redaxios: 0.5.1
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
+  vue-virtual-scroller: 2.0.0-beta.8_vue@3.2.47
 
 devDependencies:
   '@2nthony/prettier-config': 1.0.2
@@ -867,6 +869,10 @@ packages:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
     dev: true
 
+  /mitt/2.1.0:
+    resolution: {integrity: sha512-ILj2TpLiysu2wkBbWjAmww7TkZb65aiQO+DkVdUTBpBXq+MHYiETENkKFMtsJZX1Lf4pe4QOrTSjIfUwN5lRdg==}
+    dev: false
+
   /muggle-string/0.1.0:
     resolution: {integrity: sha512-Tr1knR3d2mKvvWthlk7202rywKbiOm4rVFLsfAaSIhJ6dt9o47W4S+JMtWhd/PW9Wrdew2/S2fSvhz3E2gkfEg==}
     dev: true
@@ -1167,6 +1173,22 @@ packages:
       vue: 3.2.47
     dev: false
 
+  /vue-observe-visibility/2.0.0-alpha.1_vue@3.2.47:
+    resolution: {integrity: sha512-flFbp/gs9pZniXR6fans8smv1kDScJ8RS7rEpMjhVabiKeq7Qz3D9+eGsypncjfIyyU84saU88XZ0zjbD6Gq/g==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.2.47
+    dev: false
+
+  /vue-resize/2.0.0-alpha.1_vue@3.2.47:
+    resolution: {integrity: sha512-7+iqOueLU7uc9NrMfrzbG8hwMqchfVfSzpVlCMeJQe4pyibqyoifDNbKTZvwxZKDvGkB+PdFeKvnGZMoEb8esg==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.2.47
+    dev: false
+
   /vue-router/4.1.6_vue@3.2.47:
     resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
     peerDependencies:
@@ -1193,6 +1215,17 @@ packages:
       '@volar/vue-typescript': 1.0.24
       typescript: 4.9.5
     dev: true
+
+  /vue-virtual-scroller/2.0.0-beta.8_vue@3.2.47:
+    resolution: {integrity: sha512-b8/f5NQ5nIEBRTNi6GcPItE4s7kxNHw2AIHLtDp+2QvqdTjVN0FgONwX9cr53jWRgnu+HRLPaWDOR2JPI5MTfQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      mitt: 2.1.0
+      vue: 3.2.47
+      vue-observe-visibility: 2.0.0-alpha.1_vue@3.2.47
+      vue-resize: 2.0.0-alpha.1_vue@3.2.47
+    dev: false
 
   /vue/3.2.47:
     resolution: {integrity: sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ==}

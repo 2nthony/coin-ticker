@@ -15,7 +15,8 @@
     "bignumber.js": "^9.1.1",
     "redaxios": "^0.5.1",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vue-virtual-scroller": "2.0.0-beta.8"
   },
   "devDependencies": {
     "@2nthony/prettier-config": "^1.0.2",
