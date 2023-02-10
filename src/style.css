@@ -4,7 +4,6 @@
 
 :root {
   color: #0f0f0f;
-  background-color: #f6f6f6;
   padding: 8px;
 
   font-synthesis: none;
@@ -13,18 +12,13 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  @apply dark:bg-neutral-900 dark:text-neutral-50 rounded-lg font-sans font-medium text-sm;
+  @apply bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-50 rounded-lg font-sans font-medium text-sm;
 }
 
 button {
   cursor: pointer;
 }
 
-input {
-  @apply dark:bg-neutral-800;
-}
-
-input,
 button {
   outline: none;
 }
