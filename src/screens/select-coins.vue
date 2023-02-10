@@ -1,29 +1,43 @@
 <template>
-  <div class="flex items-center gap-x-4">
-    <Input v-model="search" placeholder="Filter" />
-    <Checkbox
-      :checked="caseSensitive"
-      @change="(val) => (caseSensitive = val)"
-      class="inline-flex items-center gap-x-1"
-    >
-      Case sensitive
-    </Checkbox>
-  </div>
-
-  <ul>
-    <li v-for="coin in coinList" :key="coin.id">
+  <div class="flex flex-col gap-y-4">
+    <div class="flex items-center gap-x-4">
+      <Input v-model="search" placeholder="Filter" />
       <Checkbox
-        :checked="getIsTracking(coin)"
-        @change="(checked) => change(checked, coin)"
-        class="w-full inline-flex items-center gap-x-2"
+        :checked="caseSensitive"
+        @change="(val) => (caseSensitive = val)"
+        class="inline-flex items-center gap-x-1"
       >
-        <span class="w-full inline-grid grid-cols-4 gap-x-1">
-          <span class="uppercase truncate col-span-1">{{ coin.symbol }}</span>
-          <span class="truncate col-span-3">{{ coin.name }}</span>
-        </span>
+        Case sensitive
       </Checkbox>
-    </li>
-  </ul>
+    </div>
+
+    <div>
+      <p class="text-sm mb-1">Check to track coin price</p>
+
+      <RecycleScroller
+        class="h-[432px]"
+        :items="coinList"
+        :item-size="28"
+        key-field="id"
+      >
+        <template #="{ item: coin, index }: { item: Coin, index: number }">
+          <Checkbox
+            :checked="getIsTracking(coin)"
+            @change="(checked) => change(checked, coin)"
+            class="w-full inline-flex items-center gap-x-2 px-2 py-0.5 rounded hover:bg-neutral-300 dark:hover:bg-neutral-700"
+            :class="[index % 2 && 'bg-neutral-200 dark:bg-neutral-800']"
+          >
+            <span class="w-full inline-grid grid-cols-4 gap-x-1">
+              <span class="uppercase truncate col-span-1">
+                {{ coin.symbol }}
+              </span>
+              <span class="truncate col-span-3">{{ coin.name }}</span>
+            </span>
+          </Checkbox>
+        </template>
+      </RecycleScroller>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -34,6 +48,8 @@ import CoinList from "../fixtures/coin-list.json";
 import { useStore } from "../store";
 import { Coin } from "../types";
 import Input from "../atoms/input.vue";
+import { RecycleScroller } from "vue-virtual-scroller";
+import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
 const { trackCoin, unTrackCoin, trackingCoins } = useStore();
 
