@@ -17,7 +17,7 @@
       <RecycleScroller
         class="h-[432px]"
         :items="coinList"
-        :item-size="28"
+        :item-size="22"
         key-field="id"
       >
         <template #="{ item: coin, index }: { item: Coin, index: number }">
