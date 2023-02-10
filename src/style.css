@@ -6,7 +6,6 @@
   color: #0f0f0f;
   padding: 8px;
   height: 100%;
-  overflow: hidden;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,6 +19,7 @@
 body,
 #app {
   height: inherit;
+  overflow: hidden;
 }
 
 button {
