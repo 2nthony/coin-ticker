@@ -1,5 +1,14 @@
 <template>
-  <Input v-model="search" placeholder="Filter" />
+  <div class="flex items-center gap-x-4">
+    <Input v-model="search" placeholder="Filter" />
+    <Checkbox
+      :checked="caseSensitive"
+      @change="(val) => (caseSensitive = val)"
+      class="inline-flex items-center gap-x-1"
+    >
+      Case sensitive
+    </Checkbox>
+  </div>
 
   <ul>
     <li v-for="coin in coinList" :key="coin.id" class="">
@@ -29,6 +38,10 @@ import Input from "../atoms/input.vue";
 const { trackCoin, unTrackCoin, trackingCoins } = useStore();
 
 const search = ref("");
+const caseSensitive = ref(false);
+const casedSearch = computed(() =>
+  caseSensitive.value ? search.value : search.value.toLowerCase(),
+);
 const filteredCoinList = ref<Coin[]>([]);
 const coinList = computed(() => {
   if (search.value) {
@@ -48,13 +61,22 @@ function getIsTracking(coin: Coin) {
 }
 
 watchDebounced(
-  search,
+  [casedSearch, caseSensitive],
   () => {
-    const list = CoinList.filter(
-      (coin) =>
-        coin.symbol.toLowerCase().includes(search.value.toLowerCase()) ||
-        coin.name.toLowerCase().includes(search.value.toLowerCase()),
-    );
+    const list = CoinList.filter((coin) => {
+      let symbol = coin.symbol.toLowerCase();
+      let name = coin.name.toLowerCase();
+
+      if (caseSensitive.value) {
+        symbol = coin.symbol.toUpperCase();
+        name = coin.name;
+      }
+
+      return (
+        symbol.includes(casedSearch.value) || name.includes(casedSearch.value)
+      );
+    });
+
     filteredCoinList.value = list;
   },
   { debounce: 100 },
