@@ -1,11 +1,6 @@
 <template>
-  <input
-    v-model="search"
-    type="search"
-    autocapitalize="off"
-    autocomplete="off"
-    autocorrect="off"
-  />
+  <Input v-model="search" placeholder="Filter" />
+
   <ul>
     <li v-for="coin in coinList" :key="coin.id" class="">
       <Checkbox
@@ -29,6 +24,7 @@ import Checkbox from "../atoms/checkbox.vue";
 import CoinList from "../fixtures/coin-list.json";
 import { useStore } from "../store";
 import { Coin } from "../types";
+import Input from "../atoms/input.vue";
 
 const { trackCoin, unTrackCoin, trackingCoins } = useStore();
 
@@ -56,8 +52,8 @@ watchDebounced(
   () => {
     const list = CoinList.filter(
       (coin) =>
-        coin.symbol.toLowerCase().includes(search.value) ||
-        coin.name.toLowerCase().includes(search.value),
+        coin.symbol.toLowerCase().includes(search.value.toLowerCase()) ||
+        coin.name.toLowerCase().includes(search.value.toLowerCase()),
     );
     filteredCoinList.value = list;
   },
