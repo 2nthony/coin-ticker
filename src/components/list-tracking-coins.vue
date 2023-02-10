@@ -4,7 +4,7 @@
       <Checkbox
         :checked="coin.pin"
         @change="(checked) => (coin.pin = checked)"
-        class="inline-flex items-center gap-x-2"
+        class="w-full inline-flex items-center gap-x-2"
       >
         <span class="w-full inline-grid grid-cols-7 gap-x-1">
           <span class="uppercase truncate col-span-1">{{ coin.symbol }}</span>

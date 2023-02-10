@@ -11,11 +11,11 @@
   </div>
 
   <ul>
-    <li v-for="coin in coinList" :key="coin.id" class="">
+    <li v-for="coin in coinList" :key="coin.id">
       <Checkbox
         :checked="getIsTracking(coin)"
         @change="(checked) => change(checked, coin)"
-        class="inline-flex items-center gap-x-2"
+        class="w-full inline-flex items-center gap-x-2"
       >
         <span class="w-full inline-grid grid-cols-4 gap-x-1">
           <span class="uppercase truncate col-span-1">{{ coin.symbol }}</span>
