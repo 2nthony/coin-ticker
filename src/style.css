@@ -17,6 +17,11 @@
   @apply bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-50 rounded-lg font-sans font-medium text-sm;
 }
 
+body,
+#app {
+  height: inherit;
+}
+
 button {
   cursor: pointer;
   outline: none;
