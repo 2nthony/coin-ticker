@@ -13,12 +13,17 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  @apply bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-50 rounded-lg font-sans font-medium text-sm;
+  @apply bg rounded-lg font-sans font-medium text-sm;
+}
+
+.bg {
+  @apply bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-50;
 }
 
 body,
 #app {
   height: inherit;
+  background-color: inherit;
   overflow: hidden;
 }
 
