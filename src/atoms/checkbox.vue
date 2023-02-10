@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  checked: boolean;
+  checked?: boolean;
 }>();
 defineEmits<{
   (e: "change", checked: boolean): void;
