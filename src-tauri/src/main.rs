@@ -66,7 +66,7 @@ fn window_event(event: GlobalWindowEvent) {
     match event.event() {
         WindowEvent::Focused(false) => {
             let window = event.window().get_window("main").unwrap();
-            // window.hide().unwrap();
+            window.hide().unwrap();
         }
         _ => {}
     }

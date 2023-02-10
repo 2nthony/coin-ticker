@@ -38,7 +38,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.2nthony.coin",
+      "identifier": "com.2nthony.coin-ticker",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -67,11 +67,11 @@
         "label": "main",
         "fullscreen": false,
         "resizable": false,
-        "title": "coin",
+        "title": "Coin Ticker",
         "width": 414,
         "height": 568,
-        "decorations": true,
-        "visible": true,
+        "decorations": false,
+        "visible": false,
         "transparent": true
       }
     ],
