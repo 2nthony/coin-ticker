@@ -53,8 +53,6 @@ watch(() => trackingCoins.value.length, tick);
 </script>
 
 <template>
-  <div class="space-y-4">
-    <NavBar />
-    <RouterView />
-  </div>
+  <NavBar class="fixed top-0 left-0 right-0 h-8 px-4 flex items-center" />
+  <RouterView class="mt-8 overflow-scroll h-full" />
 </template>
