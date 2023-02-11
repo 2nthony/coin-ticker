@@ -8,8 +8,8 @@ mod ipc;
 use crate::ipc::update_tray_text;
 
 use tauri::{
-    ActivationPolicy, AppHandle, CustomMenuItem, GlobalWindowEvent, Manager, SystemTray,
-    SystemTrayEvent, SystemTrayMenu, WindowEvent,
+    ActivationPolicy, AppHandle, CustomMenuItem, Manager, SystemTray, SystemTrayEvent,
+    SystemTrayMenu,
 };
 use tauri_plugin_positioner::{Position, WindowExt};
 
@@ -28,7 +28,6 @@ fn main() {
         })
         .system_tray(tray)
         .on_system_tray_event(system_tray_event)
-        .on_window_event(window_event)
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
@@ -52,16 +51,6 @@ fn system_tray_event(app: &AppHandle, event: SystemTrayEvent) {
             "quit" => std::process::exit(0),
             _ => {}
         },
-        _ => {}
-    }
-}
-
-fn window_event(event: GlobalWindowEvent) {
-    match event.event() {
-        WindowEvent::Focused(false) => {
-            let window = event.window().get_window("main").unwrap();
-            window.hide().unwrap();
-        }
         _ => {}
     }
 }
