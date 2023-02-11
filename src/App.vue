@@ -4,7 +4,7 @@ import { invoke } from "@tauri-apps/api/tauri";
 import { api } from "./api";
 import { useStore } from "./store";
 import { currencify } from "./helpers";
-import { useAsyncState, useIntervalFn } from "@vueuse/core";
+import { useAsyncState, useIntervalFn, watchDebounced } from "@vueuse/core";
 import NavBar from "./components/nav-bar.vue";
 
 const ticktime = 33333;
@@ -55,7 +55,15 @@ watch(isLoading, (v) => {
 watch([pinCoins, latestData, () => options.value.menubar], updateTrayText, {
   deep: true,
 });
-watch(() => trackingCoins.value.length, tick);
+watchDebounced(
+  () => trackingCoins.value.length,
+  (newLength, oldLength) => {
+    if (newLength > oldLength) {
+      tick();
+    }
+  },
+  { debounce: 1000 },
+);
 </script>
 
 <template>
