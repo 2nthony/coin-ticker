@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@2nthony/prettier-config": "^1.0.2",
+    "@iconify/json": "^2.2.20",
     "@tauri-apps/cli": "^1.2.2",
     "@types/node": "^18.7.10",
     "@vitejs/plugin-vue": "^4.0.0",
