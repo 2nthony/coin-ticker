@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-y-2 mt-3">
+  <div class="flex flex-col gap-y-2 mt-3 px-2">
     <div>
       <h2>Coin Ticker</h2>
       <p>Open source menubar app, using Tauri.</p>

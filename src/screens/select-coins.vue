@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-y-4">
-    <div class="flex items-center gap-x-4">
+    <div class="flex items-center gap-x-4 px-2">
       <Input v-model="search" placeholder="Filter" />
       <Checkbox
         :checked="caseSensitive"
@@ -12,7 +12,9 @@
     </div>
 
     <div>
-      <p class="text-sm mb-1">Check to track coin price</p>
+      <p class="text-sm mb-1 text-neutral-500 px-2">
+        Check to track coin price
+      </p>
 
       <RecycleScroller
         class="h-[432px]"
@@ -25,14 +27,15 @@
         <template #="{ item: coin, index }: { item: Coin, index: number }">
           <div
             :class="[
-              'rounded hover:bg-neutral-200 dark:hover:bg-neutral-700',
+              'rounded px-2',
+              'hover:bg-opacity-70 hover:bg-neutral-200 dark:hover:bg-neutral-700',
               index % 2 !== 0 && 'bg-neutral-100 dark:bg-neutral-800',
             ]"
           >
             <Checkbox
               :checked="getIsTracking(coin)"
               @change="(checked) => change(checked, coin)"
-              class="w-full inline-flex items-center gap-x-2 px-2 py-0.5"
+              class="w-full inline-flex items-center gap-x-2 py-0.5"
             >
               <span class="w-full inline-grid grid-cols-4 gap-x-1">
                 <span class="uppercase truncate col-span-1">
