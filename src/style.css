@@ -6,6 +6,8 @@
   color: #0f0f0f;
   padding: 8px;
   height: 100%;
+  user-select: none;
+  cursor: default;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
