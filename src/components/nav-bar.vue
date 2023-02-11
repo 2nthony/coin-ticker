@@ -1,20 +1,28 @@
 <template>
-  <div v-bind="$attrs" class="flex justify-between items-center h-12">
-    <ul class="flex gap-2">
+  <!-- placeholder -->
+  <div class="bg navbar-placeholder navbar-height" />
+
+  <header
+    v-bind="$attrs"
+    class="navbar-height flex justify-between items-center"
+  >
+    <div class="flex flex-col">
+      <h1 class="text-xl font-bold leading-none">Coin Ticker</h1>
+      <span class="text-sm text-neutral-500 leading-3">v0.0.0</span>
+    </div>
+
+    <ul class="flex gap-4">
       <li v-for="{ path, meta } in routes" :key="path">
         <RouterLink :to="path">
           <div
             :title="meta!.label as string"
             :class="icons[path]"
-            class="text-lg"
+            class="text-xl"
           />
         </RouterLink>
       </li>
     </ul>
-  </div>
-
-  <!-- placeholder -->
-  <div class="h-12" />
+  </header>
 </template>
 
 <script setup lang="ts">
@@ -30,3 +38,9 @@ const icons: Record<string, string> = {
   "/about": "i-fa6-solid-circle-exclamation",
 };
 </script>
+
+<style scoped lang="postcss">
+.navbar-height {
+  @apply h-12 mt-2;
+}
+</style>

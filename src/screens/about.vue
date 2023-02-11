@@ -1,15 +1,14 @@
 <template>
   <div class="flex flex-col gap-y-2 mt-3 px-2">
     <div>
-      <h2>Coin Ticker</h2>
-      <p>Open source menubar app, using Tauri.</p>
+      <p>Menubar app to track coin price, open source.</p>
       <p class="text-sm text-neutral-500">
         (Active maintaining, feel free to feedback anything.)
       </p>
     </div>
 
     <div class="mt-2">
-      <h3>Credits</h3>
+      <h3>Assets</h3>
       <p>
         Data source:
         <a href="https://www.coingecko.com/" target="_blank">CoinGecko</a>
@@ -77,10 +76,6 @@
 <style scoped lang="postcss">
 a {
   @apply text-sky-500;
-}
-
-h2 {
-  @apply text-2xl font-bold;
 }
 
 h3 {

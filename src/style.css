@@ -4,7 +4,6 @@
 
 :root {
   color: #0f0f0f;
-  padding: 8px;
   height: 100%;
   user-select: none;
   cursor: default;
@@ -27,6 +26,10 @@ body,
   height: inherit;
   background-color: inherit;
   overflow: hidden;
+}
+
+#app {
+  @apply flex flex-col;
 }
 
 button {
