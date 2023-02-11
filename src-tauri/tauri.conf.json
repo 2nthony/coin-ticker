@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "coin",
+    "productName": "coin-ticker",
     "version": "0.0.0"
   },
   "tauri": {
