@@ -5,7 +5,7 @@
       :checked="checked"
       @change="$emit('change', (<HTMLInputElement>$event.target).checked)"
       class="hover:cursor-pointer"
-      :class="[$slots.defaults && 'mr-1']"
+      :class="[$slots.default && 'mr-1']"
     />
 
     <slot />
