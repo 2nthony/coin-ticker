@@ -13,8 +13,7 @@
         ]"
       >
         <Checkbox
-          :checked="coin.pin"
-          @change="(checked) => (coin.pin = checked)"
+          v-model:checked="coin.pin"
           class="w-full inline-flex items-center gap-x-2 py-0.5"
         >
           <span class="w-full inline-grid grid-cols-12 gap-x-1">

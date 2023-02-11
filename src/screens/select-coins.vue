@@ -3,8 +3,7 @@
     <div class="flex items-center gap-x-4 px-2">
       <Input v-model="search" placeholder="Filter" />
       <Checkbox
-        :checked="caseSensitive"
-        @change="(val) => (caseSensitive = val)"
+        v-model:checked="caseSensitive"
         class="inline-flex items-center gap-x-1"
       >
         Case sensitive
@@ -34,7 +33,7 @@
           >
             <Checkbox
               :checked="getIsTracking(coin)"
-              @change="(checked) => change(checked, coin)"
+              @update:checked="(checked) => onCheckCoin(checked, coin)"
               class="w-full inline-flex items-center gap-x-2 py-0.5"
             >
               <span class="w-full inline-grid grid-cols-4 gap-x-1">
@@ -93,7 +92,7 @@ const coinList = computed(() => {
   return CoinList;
 });
 
-function change(checked: boolean, coin: Coin) {
+function onCheckCoin(checked: boolean, coin: Coin) {
   if (checked) trackCoin(coin);
   else unTrackCoin(coin);
 }

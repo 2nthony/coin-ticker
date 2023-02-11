@@ -3,7 +3,9 @@
     <input
       type="checkbox"
       :checked="checked"
-      @change="$emit('change', (<HTMLInputElement>$event.target).checked)"
+      @change="
+        $emit('update:checked', (<HTMLInputElement>$event.target).checked)
+      "
       class="hover:cursor-pointer"
       :class="[$slots.default && 'mr-1']"
     />
@@ -17,6 +19,6 @@ defineProps<{
   checked?: boolean;
 }>();
 defineEmits<{
-  (e: "change", checked: boolean): void;
+  (e: "update:checked", checked: boolean): void;
 }>();
 </script>
