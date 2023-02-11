@@ -1,5 +1,5 @@
 <template>
-  <span v-bind="$attrs">
+  <span v-bind="$attrs" class="inline-flex items-center">
     <input
       type="checkbox"
       :checked="checked"
