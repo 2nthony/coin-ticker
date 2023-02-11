@@ -14,7 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  @apply bg rounded-lg font-sans font-medium text-sm;
+  @apply rounded-lg font-sans font-medium text-sm;
 }
 
 .bg {
@@ -26,6 +26,7 @@ body,
   height: inherit;
   background-color: inherit;
   overflow: hidden;
+  @apply bg rounded-lg;
 }
 
 #app {
