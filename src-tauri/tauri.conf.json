@@ -18,9 +18,7 @@
         "open": true
       },
       "http": {
-        "all": true,
-        "request": true,
-        "scope": ["https://api.coingecko.com/api/*", "https://vercel.com"]
+        "scope": ["https://api.coingecko.com/api/*"]
       }
     },
     "bundle": {
