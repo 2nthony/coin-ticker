@@ -18,25 +18,30 @@
         class="h-[432px]"
         :items="coinList"
         :item-size="24"
+        :buffer="300"
+        :prerender="20"
         key-field="id"
-        :item-class="[
-          'rounded',
-          'even:bg-neutral-100 even:dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700',
-        ]"
       >
-        <template #="{ item: coin }: { item: Coin }">
-          <Checkbox
-            :checked="getIsTracking(coin)"
-            @change="(checked) => change(checked, coin)"
-            class="w-full inline-flex items-center gap-x-2 px-2 py-0.5"
+        <template #="{ item: coin, index }: { item: Coin, index: number }">
+          <div
+            :class="[
+              'rounded hover:bg-neutral-200 dark:hover:bg-neutral-700',
+              index % 2 !== 0 && 'bg-neutral-100 dark:bg-neutral-800',
+            ]"
           >
-            <span class="w-full inline-grid grid-cols-4 gap-x-1">
-              <span class="uppercase truncate col-span-1">
-                {{ coin.symbol }}
+            <Checkbox
+              :checked="getIsTracking(coin)"
+              @change="(checked) => change(checked, coin)"
+              class="w-full inline-flex items-center gap-x-2 px-2 py-0.5"
+            >
+              <span class="w-full inline-grid grid-cols-4 gap-x-1">
+                <span class="uppercase truncate col-span-1">
+                  {{ coin.symbol }}
+                </span>
+                <span class="truncate col-span-3">{{ coin.name }}</span>
               </span>
-              <span class="truncate col-span-3">{{ coin.name }}</span>
-            </span>
-          </Checkbox>
+            </Checkbox>
+          </div>
         </template>
       </RecycleScroller>
     </div>
