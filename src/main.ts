@@ -3,5 +3,6 @@ import "./style.css";
 import App from "./App.vue";
 import { router } from "./router";
 import "./web-enhancement";
+import "uno.css";
 
 createApp(App).use(router).mount("#app");
