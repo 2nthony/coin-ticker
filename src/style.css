@@ -42,7 +42,7 @@ button {
 
 ::-webkit-scrollbar-thumb {
   min-height: 40px;
-  @apply bg-neutral-500;
+  @apply bg-neutral-400 dark:bg-neutral-600;
 }
 
 ::-webkit-scrollbar-thumb:hover {
