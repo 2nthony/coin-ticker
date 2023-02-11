@@ -1,3 +1,4 @@
+// integrated in `main.ts`
 const { PROD } = import.meta.env;
 
 if (PROD) {
