@@ -52,10 +52,9 @@ watch(isLoading, (v) => {
   else resume();
 });
 
-watch([latestData, () => options.value.menubar], updateTrayText, {
+watch([pinCoins, latestData, () => options.value.menubar], updateTrayText, {
   deep: true,
 });
-watch(pinCoins, updateTrayText, { deep: true });
 watch(() => trackingCoins.value.length, tick);
 </script>
 
