@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-y-2 mt-3 px-2">
+  <div class="flex flex-col gap-y-2 px-2">
     <div>
       <p>Menubar app to track coin price, open source.</p>
       <p class="text-sm text-neutral-500">
