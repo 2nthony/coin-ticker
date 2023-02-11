@@ -8,7 +8,7 @@ import { useAsyncState, useIntervalFn } from "@vueuse/core";
 import NavBar from "./components/nav-bar.vue";
 
 const ticktime = 33333;
-const { latestData, trackingCoins, pinCoins } = useStore();
+const { latestData, trackingCoins, pinCoins, options } = useStore();
 
 const { execute, isLoading } = useAsyncState(
   () =>
@@ -29,12 +29,17 @@ function tick() {
 }
 
 function updateTrayText() {
+  const { menubar } = options.value;
+
   const text = pinCoins.value
     .map((i) => {
       const data = (latestData.value as any)[i.id];
-      return `${i.symbol.slice(0, 1).toUpperCase()} ${
-        currencify(data?.usd) ?? "-"
-      }`;
+      let symbol = i.symbol;
+      if (!menubar.showFullSymbol) {
+        symbol = symbol.slice(0, 1);
+      }
+
+      return `${symbol.toUpperCase()} ${currencify(data?.usd) ?? "-"}`;
     })
     .join("  ");
 
@@ -47,7 +52,9 @@ watch(isLoading, (v) => {
   else resume();
 });
 
-watch(latestData, updateTrayText);
+watch([latestData, () => options.value.menubar], updateTrayText, {
+  deep: true,
+});
 watch(pinCoins, updateTrayText, { deep: true });
 watch(() => trackingCoins.value.length, tick);
 </script>
