@@ -15,6 +15,12 @@ export const useStore = createGlobalState(() => {
   const baseCurrency = ref("usd");
   const latestData = ref({});
 
+  const options = ref({
+    menubar: {
+      showFullSymbol: false,
+    },
+  });
+
   watch(
     trackingCoins,
     () => localStorage.setItem(storageKey, JSON.stringify(trackingCoins.value)),
@@ -34,6 +40,7 @@ export const useStore = createGlobalState(() => {
     pinCoins,
     baseCurrency,
     latestData,
+    options,
 
     trackCoin,
     unTrackCoin,
