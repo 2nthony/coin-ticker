@@ -13,12 +13,6 @@ use tauri::{
 };
 use tauri_plugin_positioner::{Position, WindowExt};
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
-
 fn main() {
     let quit = CustomMenuItem::new("quit".to_string(), "Quit").accelerator("Command+Q");
     let tray_menu = SystemTrayMenu::new().add_item(quit);
@@ -27,7 +21,7 @@ fn main() {
 
     tauri::Builder::default()
         .plugin(tauri_plugin_positioner::init())
-        .invoke_handler(tauri::generate_handler![greet, update_tray_text])
+        .invoke_handler(tauri::generate_handler![update_tray_text])
         .setup(|app| {
             app.set_activation_policy(ActivationPolicy::Accessory);
             Ok(())
