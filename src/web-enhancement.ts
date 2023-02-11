@@ -6,4 +6,4 @@ if (PROD) {
   });
 }
 
-export default {};
+export default null;
