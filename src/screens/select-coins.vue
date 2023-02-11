@@ -34,7 +34,7 @@
             <Checkbox
               :checked="getIsTracking(coin)"
               @update:checked="(checked) => onCheckCoin(checked, coin)"
-              class="w-full inline-flex items-center gap-x-2 py-0.5"
+              class="w-full py-0.5"
             >
               <span class="w-full inline-grid grid-cols-4 gap-x-1">
                 <span class="uppercase truncate col-span-1">

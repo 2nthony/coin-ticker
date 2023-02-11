@@ -12,10 +12,7 @@
           'even:bg-neutral-100 even:dark:bg-neutral-800',
         ]"
       >
-        <Checkbox
-          v-model:checked="coin.pin"
-          class="w-full inline-flex items-center gap-x-2 py-0.5"
-        >
+        <Checkbox v-model:checked="coin.pin" class="w-full py-0.5">
           <span class="w-full inline-grid grid-cols-12 gap-x-1">
             <span class="uppercase truncate col-span-2">{{ coin.symbol }}</span>
 
