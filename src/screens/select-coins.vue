@@ -17,15 +17,18 @@
       <RecycleScroller
         class="h-[432px]"
         :items="coinList"
-        :item-size="22"
+        :item-size="24"
         key-field="id"
+        :item-class="[
+          'rounded',
+          'even:bg-neutral-100 even:dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700',
+        ]"
       >
-        <template #="{ item: coin, index }: { item: Coin, index: number }">
+        <template #="{ item: coin }: { item: Coin }">
           <Checkbox
             :checked="getIsTracking(coin)"
             @change="(checked) => change(checked, coin)"
-            class="w-full inline-flex items-center gap-x-2 px-2 py-0.5 rounded hover:bg-neutral-300 dark:hover:bg-neutral-700"
-            :class="[index % 2 && 'bg-neutral-200 dark:bg-neutral-800']"
+            class="w-full inline-flex items-center gap-x-2 px-2 py-0.5"
           >
             <span class="w-full inline-grid grid-cols-4 gap-x-1">
               <span class="uppercase truncate col-span-1">
@@ -41,7 +44,6 @@
 </template>
 
 <script setup lang="ts">
-import { watchDebounced } from "@vueuse/core";
 import { computed, ref } from "vue";
 import Checkbox from "../atoms/checkbox.vue";
 import CoinList from "../fixtures/coin-list.json";
@@ -58,7 +60,23 @@ const caseSensitive = ref(false);
 const casedSearch = computed(() =>
   caseSensitive.value ? search.value : search.value.toLowerCase(),
 );
-const filteredCoinList = ref<Coin[]>([]);
+const filteredCoinList = computed(() => {
+  const list = CoinList.filter((coin) => {
+    let symbol = coin.symbol.toLowerCase();
+    let name = coin.name.toLowerCase();
+
+    if (caseSensitive.value) {
+      symbol = coin.symbol.toUpperCase();
+      name = coin.name;
+    }
+
+    return (
+      symbol.includes(casedSearch.value) || name.includes(casedSearch.value)
+    );
+  });
+
+  return list;
+});
 const coinList = computed(() => {
   if (search.value) {
     return filteredCoinList.value;
@@ -75,26 +93,4 @@ function change(checked: boolean, coin: Coin) {
 function getIsTracking(coin: Coin) {
   return trackingCoins.value.findIndex((i) => i.id === coin.id) >= 0;
 }
-
-watchDebounced(
-  [casedSearch, caseSensitive],
-  () => {
-    const list = CoinList.filter((coin) => {
-      let symbol = coin.symbol.toLowerCase();
-      let name = coin.name.toLowerCase();
-
-      if (caseSensitive.value) {
-        symbol = coin.symbol.toUpperCase();
-        name = coin.name;
-      }
-
-      return (
-        symbol.includes(casedSearch.value) || name.includes(casedSearch.value)
-      );
-    });
-
-    filteredCoinList.value = list;
-  },
-  { debounce: 100 },
-);
 </script>
