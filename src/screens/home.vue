@@ -2,7 +2,7 @@
   <div>
     <p class="text-sm mb-1 text-neutral-500 px-2">Check to pin in menubar</p>
 
-    <ul class="space-y-0.5">
+    <ul>
       <li
         v-for="coin in trackingCoins"
         :key="coin.id"
