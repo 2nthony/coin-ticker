@@ -1,31 +1,39 @@
 <script setup lang="ts">
-import { watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { invoke } from "@tauri-apps/api/tauri";
 import { api } from "./api";
 import { useStore } from "./store";
 import { currencify } from "./helpers";
-import { useAsyncState, useIntervalFn, watchDebounced } from "@vueuse/core";
+import { useIntervalFn, watchDebounced } from "@vueuse/core";
 import NavBar from "./components/nav-bar.vue";
 
 const ticktime = 33333;
 const { latestData, trackingCoins, pinCoins, options } = useStore();
+const isLoading = ref(false);
 
-const { execute, isLoading } = useAsyncState(
-  () =>
-    api.price({
+onMounted(tick);
+
+function tick() {
+  if (isLoading.value) {
+    return;
+  }
+
+  isLoading.value = true;
+
+  api
+    .price({
       ids: trackingCoins.value.map((i) => i.id),
       vs_currencies: "usd",
       include_24hr_change: true,
-    }),
-  null,
-);
-
-function tick() {
-  execute().then((v) => {
-    if (v) {
-      latestData.value = v;
-    }
-  });
+    })
+    .then((v) => {
+      if (v) {
+        latestData.value = v;
+      }
+    })
+    .finally(() => {
+      isLoading.value = false;
+    });
 }
 
 function updateTrayText() {
