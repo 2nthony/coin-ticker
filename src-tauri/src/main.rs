@@ -17,7 +17,7 @@ fn main() {
     let quit = CustomMenuItem::new("quit".to_string(), "Quit").accelerator("Command+Q");
     let tray_menu = SystemTrayMenu::new().add_item(quit);
 
-    let tray = SystemTray::new().with_menu(tray_menu).with_title("-");
+    let tray = SystemTray::new().with_menu(tray_menu);
 
     tauri::Builder::default()
         .plugin(tauri_plugin_positioner::init())
