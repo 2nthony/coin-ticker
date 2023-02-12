@@ -4,3 +4,7 @@ export function currencify(price: number) {
   const n = BigNumber(price);
   return n.toFormat();
 }
+
+export function isEqual(value: any, other: typeof value) {
+  return JSON.stringify(value) === JSON.stringify(other);
+}
