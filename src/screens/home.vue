@@ -1,6 +1,12 @@
 <template>
   <div>
-    <p class="text-sm mb-1 text-neutral-500 px-2">Check to pin in menubar</p>
+    <p class="text-sm mb-1 text-neutral-500 px-2 flex justify-between">
+      <span>Check to pin in menubar</span>
+      <span v-if="lastUpdatedTime">
+        <span>Updated</span>
+        <span class="text-sky-500">{{ " " }}{{ timeago }}</span>
+      </span>
+    </p>
 
     <ul>
       <li
@@ -46,6 +52,11 @@ import Checkbox from "../atoms/checkbox.vue";
 import { currencify } from "../helpers";
 import { useStore } from "../store";
 import ListDataSlot from "../components/list-data-slot.vue";
+import { useLastChanged, useTimeAgo } from "@vueuse/core";
 
-const { trackingCoins } = useStore();
+const { trackingCoins, lastUpdatedTime } = useStore();
+const ms = useLastChanged(lastUpdatedTime, {
+  initialValue: lastUpdatedTime.value,
+});
+const timeago = useTimeAgo(ms);
 </script>

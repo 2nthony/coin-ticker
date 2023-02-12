@@ -1,7 +1,8 @@
 import { computed, ref, watch } from "vue";
-import { createGlobalState } from "@vueuse/core";
+import { createGlobalState, timestamp } from "@vueuse/core";
 import initTrackingCoins from "./fixtures/init-tracking-coins.json";
 import { Coin } from "./types";
+import { isEqual } from "./helpers";
 
 const storageKey = "tracking-coins";
 
@@ -14,6 +15,7 @@ export const useStore = createGlobalState(() => {
   const pinCoins = computed(() => trackingCoins.value.filter((i) => i.pin));
   const baseCurrency = ref("usd");
   const latestData = ref({});
+  const lastUpdatedTime = ref(timestamp());
 
   const options = ref({
     menubar: {
@@ -26,6 +28,11 @@ export const useStore = createGlobalState(() => {
     () => localStorage.setItem(storageKey, JSON.stringify(trackingCoins.value)),
     { deep: true },
   );
+  watch(latestData, (newVal, oldVal) => {
+    if (!isEqual(newVal, oldVal)) {
+      lastUpdatedTime.value = timestamp();
+    }
+  });
 
   function trackCoin(coin: Coin) {
     trackingCoins.value.push(coin);
@@ -40,6 +47,7 @@ export const useStore = createGlobalState(() => {
     pinCoins,
     baseCurrency,
     latestData,
+    lastUpdatedTime,
     options,
 
     trackCoin,
