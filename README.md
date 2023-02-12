@@ -10,7 +10,7 @@ Go [releases](https://github.com/2nthony/coin-ticker/releases).
 
 |Light|Dark|
 |-|-|
-|![](https://cdn.jsdelivr.net/gh/2nthony/statics@main/uPic/E9ppP8Uq3ndv.png)|![](https://cdn.jsdelivr.net/gh/2nthony/statics@main/uPic/t25qWepf7zKE.png)|
+|![](https://cdn.jsdelivr.net/gh/2nthony/statics@main/uPic/HVqmP9ndtMCp.png)|![](https://cdn.jsdelivr.net/gh/2nthony/statics@main/uPic/i0ufoHzvOd7r.png)|
 
 ## Sponsors
 
