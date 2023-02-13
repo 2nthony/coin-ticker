@@ -10,7 +10,7 @@
 
     <ul>
       <li
-        v-for="coin in trackingCoins"
+        v-for="coin in coins"
         :key="coin.id"
         :class="[
           'rounded px-2',
@@ -24,22 +24,20 @@
 
             <span class="truncate col-span-5">{{ coin.name }}</span>
 
-            <ListDataSlot :id="coin.id" v-slot="{ data, positive }">
-              <span
-                :class="[positive ? 'text-emerald-500' : 'text-rose-500']"
-                class="truncate col-span-3"
-              >
-                ${{ currencify(data?.usd) }}
-              </span>
+            <span
+              :class="[coin.isPositive ? 'text-emerald-500' : 'text-rose-500']"
+              class="truncate col-span-3"
+            >
+              {{ currencify(coin.data.usd) }}
+            </span>
 
-              <span
-                :class="[positive ? 'text-emerald-500' : 'text-rose-500']"
-                class="col-span-2"
-              >
-                {{ positive ? "+" : "-"
-                }}{{ Math.abs(data?.usd_24h_change).toFixed(2) }}%
-              </span>
-            </ListDataSlot>
+            <span
+              :class="[coin.isPositive ? 'text-emerald-500' : 'text-rose-500']"
+              class="col-span-2"
+            >
+              {{ coin.isPositive ? "+" : "-"
+              }}{{ Math.abs(coin.data.usd_24h_change).toFixed(2) }}%
+            </span>
           </span>
         </Checkbox>
       </li>
@@ -51,10 +49,24 @@
 import Checkbox from "../atoms/checkbox.vue";
 import { currencify } from "../helpers";
 import { useStore } from "../store";
-import ListDataSlot from "../components/list-data-slot.vue";
 import { useLastChanged, useTimeAgo } from "@vueuse/core";
+import { computed } from "vue";
 
-const { trackingCoins, lastUpdatedTime } = useStore();
+const { trackingCoins, lastUpdatedTime, latestData } = useStore();
+
+const coins = computed(() => {
+  return trackingCoins.value.map((coin) => {
+    const data = (latestData.value as any)[coin.id];
+    const isPositive = data?.usd_24h_change > 0;
+
+    return {
+      ...coin,
+      data,
+      isPositive,
+    };
+  });
+});
+
 const ms = useLastChanged(lastUpdatedTime, {
   initialValue: lastUpdatedTime.value,
 });
