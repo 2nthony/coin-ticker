@@ -49,7 +49,7 @@ function updateTrayText() {
 
       return `${symbol.toUpperCase()} ${currencify(data?.usd) ?? "-"}`;
     })
-    .join("  ");
+    .join(" ");
 
   invoke("update_tray_text", { text });
 }
