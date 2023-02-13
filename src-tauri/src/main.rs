@@ -11,7 +11,6 @@ use tauri::{
     ActivationPolicy, AppHandle, CustomMenuItem, Manager, SystemTray, SystemTrayEvent,
     SystemTrayMenu,
 };
-use tauri_plugin_positioner::{Position, WindowExt};
 
 fn main() {
     let quit = CustomMenuItem::new("quit".to_string(), "Quit").accelerator("Command+Q");
@@ -36,9 +35,9 @@ fn system_tray_event(app: &AppHandle, event: SystemTrayEvent) {
     tauri_plugin_positioner::on_tray_event(app, &event);
 
     match event {
-        SystemTrayEvent::LeftClick { position: _, .. } => {
+        SystemTrayEvent::LeftClick { position: pos, .. } => {
             let window = app.get_window("main").unwrap();
-            window.move_window(Position::TrayCenter).unwrap();
+            window.set_position(pos).unwrap();
 
             if window.is_visible().unwrap() {
                 window.hide().unwrap();
