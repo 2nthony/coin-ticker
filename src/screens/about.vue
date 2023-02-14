@@ -39,30 +39,24 @@
       </p>
     </div>
 
-    <div>
+    <div class="support-me">
       <h3>Support me</h3>
       <p>
-        <a
-          class="sponsor-link"
-          href="https://github.com/sponsors/2nthony"
-          target="_blank"
-        >
-          <img
-            src="https://github.githubassets.com/images/email/sponsors/mona.png"
-          />
-          GitHub Sponsor: 2nthony
+        <img
+          src="https://github.githubassets.com/images/email/sponsors/mona.png"
+        />
+        GitHub Sponsor:
+        <a href="https://github.com/sponsors/2nthony" target="_blank">
+          2nthony
         </a>
       </p>
       <p>
-        <a
-          class="sponsor-link"
-          href="https://www.paypal.com/paypalme/evillt"
-          target="_blank"
-        >
-          <img
-            src="https://www.paypalobjects.com/digitalassets/c/website/logo/monogram/pp_fc_mg_2x.png"
-          />
-          Paypal: evillt
+        <img
+          src="https://www.paypalobjects.com/digitalassets/c/website/logo/monogram/pp_fc_mg_2x.png"
+        />
+        Paypal:
+        <a href="https://www.paypal.com/paypalme/evillt" target="_blank">
+          evillt
         </a>
       </p>
     </div>
@@ -78,10 +72,7 @@ h3 {
   @apply text-xl font-bold;
 }
 
-.sponsor-link {
-  @apply flex items-center;
-}
-.sponsor-link img {
-  @apply w-5 h-5 mr-2;
+.support-me img {
+  @apply w-5 h-5 inline-block;
 }
 </style>
