@@ -33,7 +33,7 @@
 
             <span
               :class="[coin.isPositive ? 'text-emerald-500' : 'text-rose-500']"
-              class="col-span-2"
+              class="col-span-2 inline-flex justify-end"
             >
               {{ coin.isPositive ? "+" : "-"
               }}{{ Math.abs(coin.data.usd_24h_change).toFixed(2) }}%
