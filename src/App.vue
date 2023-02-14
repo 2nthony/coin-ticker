@@ -78,7 +78,7 @@ watchDebounced(
   <NavBar
     class="bg fixed top-0 left-0 right-0 px-4 flex items-center rounded-t-lg"
   />
-  <div class="p-2 mb-2 h-full overflow-y-scroll">
+  <div class="p-2 mb-2 h-full overflow-y-scroll overflow-x-hidden">
     <RouterView />
   </div>
 </template>

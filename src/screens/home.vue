@@ -13,7 +13,7 @@
         v-for="coin in coins"
         :key="coin.id"
         :class="[
-          'rounded px-2',
+          'rounded px-2 -mr-2',
           'hover:bg-opacity-70 hover:bg-neutral-200 dark:hover:bg-neutral-700',
           'even:bg-neutral-100 even:dark:bg-neutral-800',
         ]"

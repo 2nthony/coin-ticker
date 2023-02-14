@@ -16,7 +16,7 @@
       </p>
 
       <RecycleScroller
-        class="h-[400px]"
+        class="h-[400px] -mr-2"
         :items="coinList"
         :item-size="24"
         :buffer="300"
