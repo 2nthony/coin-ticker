@@ -56,7 +56,7 @@ const { trackingCoins, lastUpdatedTime, latestData } = useStore();
 
 const coins = computed(() => {
   return trackingCoins.value.map((coin) => {
-    const data = ((latestData.value as any) ?? {})[coin.id];
+    const data = (latestData.value as any)[coin.id] ?? {};
     const isPositive = data?.usd_24h_change > 0;
 
     return {
