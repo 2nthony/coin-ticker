@@ -1,13 +1,15 @@
 <template>
   <div class="flex flex-col gap-y-4">
     <div class="flex items-center gap-x-4 px-2">
-      <Input v-model="search" placeholder="Filter" />
-      <Checkbox
-        v-model:checked="caseSensitive"
-        class="inline-flex items-center gap-x-1"
-      >
-        Case sensitive
-      </Checkbox>
+      <Input v-model="search" placeholder="Filter" class="w-2/5" />
+      <span class="inline-flex gap-x-2">
+        <Checkbox v-model:checked="caseSensitive" class="text-sm leading-tight">
+          Case sensitive
+        </Checkbox>
+        <Checkbox v-model:checked="selectedOnly" class="text-sm leading-tight">
+          Selected only
+        </Checkbox>
+      </span>
     </div>
 
     <div>
@@ -17,7 +19,7 @@
 
       <RecycleScroller
         class="h-[400px] -mr-2"
-        :items="coinList"
+        :items="filteredCoinList"
         :item-size="24"
         :buffer="300"
         :prerender="20"
@@ -64,32 +66,36 @@ const { trackCoin, unTrackCoin, trackingCoins } = useStore();
 
 const search = ref("");
 const caseSensitive = ref(false);
+const selectedOnly = ref(false);
 const casedSearch = computed(() =>
   caseSensitive.value ? search.value : search.value.toLowerCase(),
 );
-const filteredCoinList = computed(() => {
-  const list = CoinList.filter((coin) => {
-    let symbol = coin.symbol.toLowerCase();
-    let name = coin.name.toLowerCase();
-
-    if (caseSensitive.value) {
-      symbol = coin.symbol.toUpperCase();
-      name = coin.name;
-    }
-
-    return (
-      symbol.includes(casedSearch.value) || name.includes(casedSearch.value)
-    );
-  });
-
-  return list;
-});
+// const coinList = computed(() => selectedOnly.value ? trackingCoins : CoinList)
 const coinList = computed(() => {
-  if (search.value) {
-    return filteredCoinList.value;
+  if (selectedOnly.value) {
+    return trackingCoins.value;
   }
 
   return CoinList;
+});
+const filteredCoinList = computed(() => {
+  if (search.value) {
+    return coinList.value.filter((coin) => {
+      let symbol = coin.symbol.toLowerCase();
+      let name = coin.name.toLowerCase();
+
+      if (caseSensitive.value) {
+        symbol = coin.symbol.toUpperCase();
+        name = coin.name;
+      }
+
+      return (
+        symbol.includes(casedSearch.value) || name.includes(casedSearch.value)
+      );
+    });
+  }
+
+  return coinList.value;
 });
 
 function onCheckCoin(checked: boolean, coin: Coin) {
