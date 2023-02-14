@@ -65,10 +65,6 @@
           Paypal: evillt
         </a>
       </p>
-
-      <img
-        src="https://cdn.jsdelivr.net/gh/2nthony/sponsors-image/sponsors.svg"
-      />
     </div>
   </div>
 </template>
