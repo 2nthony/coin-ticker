@@ -28,7 +28,7 @@
               :class="[coin.isPositive ? 'text-emerald-500' : 'text-rose-500']"
               class="truncate col-span-3"
             >
-              {{ currencify(coin.data.usd) }}
+              ${{ currencify(coin.data.usd) }}
             </span>
 
             <span
