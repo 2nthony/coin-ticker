@@ -6,6 +6,7 @@ import { useStore } from "./store";
 import { currencify } from "./helpers";
 import { useIntervalFn, watchDebounced } from "@vueuse/core";
 import NavBar from "./components/nav-bar.vue";
+import Symbols from "./fixtures/symbols.json";
 
 const ticktime = 33333;
 const { latestData, trackingCoins, pinCoins, options } = useStore();
@@ -43,6 +44,13 @@ function updateTrayText() {
     .map((i) => {
       const data = (latestData.value as any)[i.id];
       let symbol = i.symbol;
+      if (menubar.showUnicodeSymbol) {
+        const { unicode } =
+          Symbols.find((s) => s.symbol.toLowerCase() === i.symbol) ?? {};
+        if (unicode) {
+          symbol = unicode;
+        }
+      }
       if (!menubar.showFullSymbol) {
         symbol = symbol.slice(0, 1);
       }
