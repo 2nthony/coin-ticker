@@ -16,6 +16,10 @@ Go [releases](https://github.com/2nthony/coin-ticker/releases).
 
 [![sponsors](https://cdn.jsdelivr.net/gh/2nthony/sponsors-image/sponsors.svg)](https://github.com/sponsors/2nthony)
 
+## Credits
+
+- https://www.reddit.com/r/CryptoCurrency/comments/mt0nci/list_of_all_known_cryptocurrency_unicodes_and/
+
 ## License
 
 GNU GPLv3

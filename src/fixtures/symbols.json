@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Bitcoin",
+    "symbol": "BTC",
+    "unicode": "₿"
+  },
+  {
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "unicode": "Ξ"
+  },
+  {
+    "name": "Tether",
+    "symbol": "USDT",
+    "unicode": "₮"
+  },
+  {
+    "name": "Cardano",
+    "symbol": "ADA",
+    "unicode": "₳"
+  },
+  {
+    "name": "XRP",
+    "symbol": "XRP",
+    "unicode": "✕"
+  },
+  {
+    "name": "Solana",
+    "symbol": "SOL",
+    "unicode": "◎"
+  },
+  {
+    "name": "Polkadot",
+    "symbol": "DOT",
+    "unicode": "●"
+  },
+  {
+    "name": "Dogecoin",
+    "symbol": "DOGE",
+    "unicode": "Ð"
+  },
+  {
+    "name": "Dai",
+    "symbol": "DAI",
+    "unicode": "◈"
+  },
+  {
+    "name": "Litecoin",
+    "symbol": "LTC",
+    "unicode": "Ł"
+  },
+  {
+    "name": "Algorand",
+    "symbol": "ALGO",
+    "unicode": "Ⱥ"
+  },
+  {
+    "name": "Bitcoin Cash",
+    "symbol": "BCH",
+    "unicode": "Ƀ"
+  },
+  {
+    "name": "ECOMI",
+    "symbol": "OMI",
+    "unicode": "Ο"
+  },
+  {
+    "name": "Internet Computer",
+    "symbol": "ICP",
+    "unicode": "∞"
+  },
+  {
+    "name": "Ethereum Classic",
+    "symbol": "ETC",
+    "unicode": "ξ"
+  },
+  {
+    "name": "Monero",
+    "symbol": "XMR",
+    "unicode": "ɱ"
+  },
+  {
+    "name": "Tezos",
+    "symbol": "XTZ",
+    "unicode": "ꜩ"
+  },
+  {
+    "name": "Iota",
+    "symbol": "MIOTA",
+    "unicode": "ɨ"
+  },
+  {
+    "name": "EOS",
+    "symbol": "EOS",
+    "unicode": "ε"
+  },
+  {
+    "name": "Bitcoin SV",
+    "symbol": "BSV",
+    "unicode": "Ɓ"
+  },
+  {
+    "name": "Maker",
+    "symbol": "MKR",
+    "unicode": "Μ"
+  },
+  {
+    "name": "Zcash",
+    "symbol": "ZEC",
+    "unicode": "ⓩ"
+  },
+  {
+    "name": "Dash",
+    "symbol": "DASH",
+    "unicode": "Đ"
+  },
+  {
+    "name": "Nano",
+    "symbol": "XNO",
+    "unicode": "Ӿ"
+  },
+  {
+    "name": "Augur",
+    "symbol": "REP",
+    "unicode": "Ɍ"
+  },
+  {
+    "name": "Steem",
+    "symbol": "STEEM",
+    "unicode": "ȿ"
+  },
+  {
+    "name": "Setllar Lumens",
+    "symbol": "XLM",
+    "unicode": "*"
+  },
+  {
+    "name": "THETA",
+    "symbol": "THETA",
+    "unicode": "ϑ"
+  },
+  {
+    "name": "Filecoin",
+    "symbol": "FIL",
+    "unicode": "⨎"
+  },
+  {
+    "name": "Basic Attention Token",
+    "symbol": "BAT",
+    "unicode": "⟁"
+  },
+  {
+    "name": "Lisk",
+    "symbol": "LSK",
+    "unicode": "Ⱡ"
+  },
+  {
+    "name": "Reddcoin",
+    "symbol": "RDD",
+    "unicode": "Ɍ"
+  },
+  {
+    "name": "Navcoin",
+    "symbol": "NAV",
+    "unicode": "Ꞥ"
+  },
+  {
+    "name": "Namecoin",
+    "symbol": "NMC",
+    "unicode": "ℕ"
+  },
+  {
+    "name": "Peercoin",
+    "symbol": "PPC",
+    "unicode": "Ᵽ"
+  },
+  {
+    "name": "Primecoin",
+    "symbol": "XPM",
+    "unicode": "Ψ"
+  }
+]
