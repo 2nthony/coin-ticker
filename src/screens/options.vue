@@ -8,6 +8,12 @@
           <span class="hint">(BTC or B)</span>
         </Checkbox>
       </p>
+      <p>
+        <Checkbox v-model:checked="options.menubar.showUnicodeSymbol">
+          Show unicode symbol
+          <span class="hint">({{ Symbols[0].unicode }} or B)</span>
+        </Checkbox>
+      </p>
     </div>
   </div>
 </template>
@@ -15,6 +21,7 @@
 <script setup lang="ts">
 import Checkbox from "../atoms/checkbox.vue";
 import { useStore } from "../store";
+import Symbols from "../fixtures/symbols.json";
 
 const { options } = useStore();
 </script>

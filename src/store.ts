@@ -20,6 +20,7 @@ export const useStore = createGlobalState(() => {
   const options = ref({
     menubar: {
       showFullSymbol: false,
+      showUnicodeSymbol: true,
     },
   });
 
