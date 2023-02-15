@@ -10,7 +10,7 @@
 
     <ul>
       <li
-        v-for="coin in coins"
+        v-for="(coin, idx) in coins"
         :key="coin.id"
         :class="[
           'rounded px-2 -mr-2',
@@ -18,7 +18,11 @@
           'even:bg-neutral-100 even:dark:bg-neutral-800',
         ]"
       >
-        <Checkbox v-model:checked="coin.pin" class="w-full py-0.5">
+        <Checkbox
+          :checked="coin.pin"
+          @update:checked="(checked) => togglePin(idx, checked)"
+          class="w-full py-0.5"
+        >
           <span class="w-full inline-grid grid-cols-12 gap-x-1">
             <span class="uppercase truncate col-span-2">{{ coin.symbol }}</span>
 
@@ -56,7 +60,7 @@ const { trackingCoins, lastUpdatedTime, latestData } = useStore();
 
 const coins = computed(() => {
   return trackingCoins.value.map((coin) => {
-    const data = (latestData.value as any)[coin.id] ?? {};
+    const data = latestData.value[coin.id] ?? {};
     const isPositive = data?.usd_24h_change > 0;
 
     return {
@@ -66,6 +70,10 @@ const coins = computed(() => {
     };
   });
 });
+
+function togglePin(idx: number, checked: boolean) {
+  trackingCoins.value[idx].pin = checked;
+}
 
 const ms = useLastChanged(lastUpdatedTime, {
   initialValue: lastUpdatedTime.value,
