@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@2nthony/eslint-config': ^1.0.0
+  '@2nthony/eslint-config': ^1.0.1
   '@iconify/json': ^2.2.20
   '@tauri-apps/api': ^1.2.0
   '@tauri-apps/cli': ^1.2.2
@@ -32,7 +32,7 @@ dependencies:
   vue-virtual-scroller: 2.0.0-beta.8_vue@3.2.47
 
 devDependencies:
-  '@2nthony/eslint-config': 1.0.0_ycpbpc6yetojsgtrx3mwntkhsu
+  '@2nthony/eslint-config': 1.0.1_ycpbpc6yetojsgtrx3mwntkhsu
   '@iconify/json': 2.2.20
   '@tauri-apps/cli': 1.2.3
   '@types/node': 18.13.0
@@ -48,8 +48,8 @@ devDependencies:
 
 packages:
 
-  /@2nthony/eslint-config/1.0.0_ycpbpc6yetojsgtrx3mwntkhsu:
-    resolution: {integrity: sha512-th9Hm1ZKJCyrFT6lbYgvNfY6gsajnJfmVBbvgKszDoMxthqHWXDgISsnSRAjMeUiOigTiUdYafg9BhOG1K/ZhQ==}
+  /@2nthony/eslint-config/1.0.1_ycpbpc6yetojsgtrx3mwntkhsu:
+    resolution: {integrity: sha512-seufJQ/MiHgCStrHqctK0NGdlw94Fs0M0reut70xXaJofki+7+C8ndszQOVKNlmdQrbkZL+02UJK8BR2COUKoQ==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
