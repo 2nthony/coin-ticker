@@ -44,7 +44,7 @@
       <p>
         <img
           src="https://github.githubassets.com/images/email/sponsors/mona.png"
-        />
+        >
         GitHub Sponsor:
         <a href="https://github.com/sponsors/2nthony" target="_blank">
           2nthony
@@ -53,7 +53,7 @@
       <p>
         <img
           src="https://www.paypalobjects.com/digitalassets/c/website/logo/monogram/pp_fc_mg_2x.png"
-        />
+        >
         Paypal:
         <a href="https://www.paypal.com/paypalme/evillt" target="_blank">
           evillt

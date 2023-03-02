@@ -1,41 +1,42 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "./screens/home.vue";
-import SelectCoins from "./screens/select-coins.vue";
-import Options from "./screens/options.vue";
-import About from "./screens/about.vue";
+import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import Home from './screens/home.vue'
+import SelectCoins from './screens/select-coins.vue'
+import Options from './screens/options.vue'
+import About from './screens/about.vue'
 
 const routes: RouteRecordRaw[] = [
   {
-    path: "/",
+    path: '/',
     component: Home,
     meta: {
-      label: "My List",
+      label: 'My List',
     },
   },
   {
-    path: "/select-coins",
+    path: '/select-coins',
     component: SelectCoins,
     meta: {
-      label: "Select Coins",
+      label: 'Select Coins',
     },
   },
   {
-    path: "/options",
+    path: '/options',
     component: Options,
     meta: {
-      label: "Options",
+      label: 'Options',
     },
   },
   {
-    path: "/about",
+    path: '/about',
     component: About,
     meta: {
-      label: "About",
+      label: 'About',
     },
   },
-];
+]
 
 export const router = createRouter({
   history: createWebHashHistory(),
   routes,
-});
+})

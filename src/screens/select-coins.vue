@@ -1,3 +1,59 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import { RecycleScroller } from 'vue-virtual-scroller'
+import Checkbox from '../atoms/checkbox.vue'
+import CoinList from '../fixtures/coin-list.json'
+import { useStore } from '../store'
+import type { Coin } from '../types'
+import Input from '../atoms/input.vue'
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+
+const { trackCoin, unTrackCoin, trackingCoins } = useStore()
+
+const search = ref('')
+const caseSensitive = ref(false)
+const selectedOnly = ref(false)
+const casedSearch = computed(() =>
+  caseSensitive.value ? search.value : search.value.toLowerCase(),
+)
+// const coinList = computed(() => selectedOnly.value ? trackingCoins : CoinList)
+const coinList = computed(() => {
+  if (selectedOnly.value)
+    return trackingCoins.value
+
+  return CoinList
+})
+const filteredCoinList = computed(() => {
+  if (search.value) {
+    return coinList.value.filter((coin) => {
+      let symbol = coin.symbol.toLowerCase()
+      let name = coin.name.toLowerCase()
+
+      if (caseSensitive.value) {
+        symbol = coin.symbol.toUpperCase()
+        name = coin.name
+      }
+
+      return (
+        symbol.includes(casedSearch.value) || name.includes(casedSearch.value)
+      )
+    })
+  }
+
+  return coinList.value
+})
+
+function onCheckCoin(checked: boolean, coin: Coin) {
+  if (checked)
+    trackCoin(coin)
+  else unTrackCoin(coin)
+}
+
+function getIsTracking(coin: Coin) {
+  return trackingCoins.value.findIndex(i => i.id === coin.id) >= 0
+}
+</script>
+
 <template>
   <div class="flex flex-col gap-y-4">
     <div class="flex items-center gap-x-4 px-2">
@@ -25,7 +81,9 @@
         :prerender="20"
         key-field="id"
       >
-        <template #="{ item: coin, index }: { item: Coin, index: number }">
+        <template
+          #default="{ item: coin, index }: { item: Coin, index: number }"
+        >
           <div
             :class="[
               'rounded px-2',
@@ -35,8 +93,8 @@
           >
             <Checkbox
               :checked="getIsTracking(coin)"
-              @update:checked="(checked) => onCheckCoin(checked, coin)"
               class="w-full py-0.5"
+              @update:checked="(checked) => onCheckCoin(checked, coin)"
             >
               <span class="w-full inline-grid grid-cols-4 gap-x-1">
                 <span class="uppercase truncate col-span-1">
@@ -51,59 +109,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { computed, ref } from "vue";
-import Checkbox from "../atoms/checkbox.vue";
-import CoinList from "../fixtures/coin-list.json";
-import { useStore } from "../store";
-import { Coin } from "../types";
-import Input from "../atoms/input.vue";
-import { RecycleScroller } from "vue-virtual-scroller";
-import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
-
-const { trackCoin, unTrackCoin, trackingCoins } = useStore();
-
-const search = ref("");
-const caseSensitive = ref(false);
-const selectedOnly = ref(false);
-const casedSearch = computed(() =>
-  caseSensitive.value ? search.value : search.value.toLowerCase(),
-);
-// const coinList = computed(() => selectedOnly.value ? trackingCoins : CoinList)
-const coinList = computed(() => {
-  if (selectedOnly.value) {
-    return trackingCoins.value;
-  }
-
-  return CoinList;
-});
-const filteredCoinList = computed(() => {
-  if (search.value) {
-    return coinList.value.filter((coin) => {
-      let symbol = coin.symbol.toLowerCase();
-      let name = coin.name.toLowerCase();
-
-      if (caseSensitive.value) {
-        symbol = coin.symbol.toUpperCase();
-        name = coin.name;
-      }
-
-      return (
-        symbol.includes(casedSearch.value) || name.includes(casedSearch.value)
-      );
-    });
-  }
-
-  return coinList.value;
-});
-
-function onCheckCoin(checked: boolean, coin: Coin) {
-  if (checked) trackCoin(coin);
-  else unTrackCoin(coin);
-}
-
-function getIsTracking(coin: Coin) {
-  return trackingCoins.value.findIndex((i) => i.id === coin.id) >= 0;
-}
-</script>

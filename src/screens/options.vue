@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import Checkbox from '../atoms/checkbox.vue'
+import { useStore } from '../store'
+import Symbols from '../fixtures/symbols.json'
+
+const { options } = useStore()
+</script>
+
 <template>
   <div class="flex flex-col gap-y-2 px-2">
     <div class="">
@@ -17,14 +25,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import Checkbox from "../atoms/checkbox.vue";
-import { useStore } from "../store";
-import Symbols from "../fixtures/symbols.json";
-
-const { options } = useStore();
-</script>
 
 <style scoped lang="postcss">
 h3 {
