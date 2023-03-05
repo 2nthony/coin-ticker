@@ -4,9 +4,6 @@ import initTrackingCoins from './fixtures/init-tracking-coins.json'
 import type { Coin, LatestData } from './types'
 import { isEqual } from './helpers'
 
-const name
-const name2
-
 const storageKey = 'tracking-coins'
 
 export const useStore = createGlobalState(() => {
