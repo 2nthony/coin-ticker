@@ -25,8 +25,8 @@ dependencies:
 
 devDependencies:
   '@2nthony/eslint-config':
-    specifier: ^1.0.1
-    version: 1.0.1(eslint@8.35.0)(typescript@4.9.5)
+    specifier: ^1.0.3
+    version: 1.0.3(eslint@8.35.0)(typescript@4.9.5)
   '@iconify/json':
     specifier: ^2.2.20
     version: 2.2.20
@@ -66,8 +66,8 @@ devDependencies:
 
 packages:
 
-  /@2nthony/eslint-config@1.0.1(eslint@8.35.0)(typescript@4.9.5):
-    resolution: {integrity: sha512-seufJQ/MiHgCStrHqctK0NGdlw94Fs0M0reut70xXaJofki+7+C8ndszQOVKNlmdQrbkZL+02UJK8BR2COUKoQ==}
+  /@2nthony/eslint-config@1.0.3(eslint@8.35.0)(typescript@4.9.5):
+    resolution: {integrity: sha512-AMYksXKgN6GmVe14N+k5exVQPYjBfxAfndNkLdnZoEcI77QA/zGXZ3gCxfCUaaPOY6e6cEyeS2EXTZjCeyORcg==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
